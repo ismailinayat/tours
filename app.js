@@ -9,6 +9,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const tourRouter = require('./routes/tourRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 const globalErrorHandler = require('./controllers/errorController');
 const AppError = require('./utils/appError');
 const userRouter = require('./routes/userRoutes');
@@ -44,7 +45,7 @@ const limiter = rateLimit({
   message: 'Too many request from this IP, please try again in one hour!'
 });
 
-app.use('/api', limiter);
+//app.use('/api', limiter);
 
 app.use(express.json({ limit: '10kb' }));
 
@@ -79,6 +80,7 @@ app.use('/', viewRouter);
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reviews', reviewRouter);
+app.use('/api/v1/bookings', bookingRouter)
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
