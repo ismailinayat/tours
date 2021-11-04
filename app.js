@@ -18,7 +18,7 @@ const viewRouter = require('./routes/viewRoutes');
 const cors = require('cors');
 
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://clever-galileo-08ba26.netlify.app/',
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true
 
