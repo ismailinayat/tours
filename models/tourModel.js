@@ -143,6 +143,7 @@ tourSchema.pre('save', function(next) {
 });
 
 tourSchema.pre(/^find/, function(next) {
+  console.log(this)
   this.populate({
     path: 'guides',
     select: '-__v -passwordChangedAt'
